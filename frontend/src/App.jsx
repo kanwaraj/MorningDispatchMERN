@@ -1,15 +1,26 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignInForm from "./auth/forms/SignInForm";
+import SignUpForm from "./auth/forms/SignUpForm";
+import Home from "./pages/Home";
+import NewsArticles from "./pages/NewsArticles";
+import About from "./pages/About";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-      </h1>
-      <p>fdsfsd</p>
-      <Button className="bg-red-400" varient="ghost">Click Me</Button>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/sign-in" element={<SignInForm />} />
+          <Route path="/sign-up" element={<SignUpForm />} />
+          <Route path="/" element={<Home />} />
+          <Route path='/about' element={<About/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/news' element={<NewsArticles/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
